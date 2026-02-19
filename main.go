@@ -25,16 +25,25 @@ func main() {
 	conten := strings.TrimSpace(string(file))
 	lines := strings.Split(conten, "\n")
 
-	antNbr := GetAnts(lines)
-	if antNbr == 0 {
+	antNbr, lineIndex := GetAnts(lines)
+	if lineIndex == -1 {
 		return
 	}
-	fmt.Printf("Number of ants: %d\n", antNbr)
+	if lineIndex == len(lines)-1 {
+		fmt.Println("ERROR: invalid data format")
+		return
+	}
+	if antNbr == 0 {
+		fmt.Println("ERROR: invalid data format")
+		return
+	}
+	
+	fmt.Println("Number of ants:",antNbr , "line index:", lineIndex)
 
 }
 
-func GetAnts(lines []string) int {
-    for _, line := range lines {
+func GetAnts(lines []string) (int , int) {
+    for i , line := range lines {
         line = strings.TrimSpace(line)
         if line == "" || strings.HasPrefix(line, "#") {
             continue 
@@ -43,18 +52,19 @@ func GetAnts(lines []string) int {
         fields := strings.Fields(line)
         if len(fields) != 1 {
             fmt.Println("ERROR: invalid data format")
-            return 0
+            return 0 , -1
         }
 
         antNbr, err := strconv.Atoi(fields[0])
         if err != nil || antNbr <= 0 {
             fmt.Println("ERROR: invalid data format")
-            return 0
+            return 0 , -1
         }
 
-        return antNbr 
+        return antNbr , i
     }
 
     fmt.Println("ERROR: invalid data format") 
-    return 0
+    return 0 , -1
 }
+
