@@ -13,7 +13,7 @@ func CheckStartandEnd(lines []string) bool {
 	for i := 0; i < len(lines); i++ {
 		line := strings.TrimSpace(lines[i])
 
-		if line == "" || strings.HasPrefix(line, "#") {
+		if line == "" || !strings.HasPrefix(line, "#") {
 			continue
 		}
 
