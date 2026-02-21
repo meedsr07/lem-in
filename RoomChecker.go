@@ -6,71 +6,81 @@ import (
 	"strings"
 )
 
-type Rome struct {
-	Name string
-	X    int
-	Y    int
-}
-
-func GetRomes(lines []string, startindx int) []Rome {
-	for i := startindx; i < len(lines); i++ {
-	}
-}
-
 func CheckStartandEnd(lines []string) bool {
 	foundstart := false
-	founend := false
+	foundend := false
+
 	for i := 0; i < len(lines); i++ {
 		line := strings.TrimSpace(lines[i])
+
 		if line == "" || strings.HasPrefix(line, "#") {
 			continue
 		}
+
 		if line == "##start" {
-			if i < len(line) {
-				part := strings.Fields(string(line[i+1]))
-				if len(part) != 3 {
-					fmt.Println("Error Invalid forma")
-					return false
-				}
-				X := part[1]
-				Y := part[2]
-				_, errX := strconv.Atoi(X)
-				_, errY := strconv.Atoi(Y)
-				if errX != nil || errY != nil {
-					fmt.Println("Error invalid informa")
-					return false
-				}
+			if i+1 >= len(lines) {
+				fmt.Println("Error: ##start without room")
+				return false
 			}
+
+			part := strings.Fields(lines[i+1])
+			if len(part) != 3 {
+				fmt.Println("Error Invalid format")
+				return false
+			}
+
+			if part[0] == "" || strings.HasPrefix(part[0], "L") {
+				fmt.Println("Invalid room name")
+				return false
+			}
+
+			_, errX := strconv.Atoi(part[1])
+			_, errY := strconv.Atoi(part[2])
+			if errX != nil || errY != nil {
+				fmt.Println("Error invalid information")
+				return false
+			}
+
 			foundstart = true
 		}
+
 		if line == "##end" {
-			if i < len(line) {
-				part := strings.Fields(string(line[i+1]))
-				if len(part) != 3 {
-					fmt.Println("Error Invalid forma")
-					return false
-				}
-				X := part[1]
-				Y := part[2]
-				_, errX := strconv.Atoi(X)
-				_, errY := strconv.Atoi(Y)
-				if errX != nil || errY != nil {
-					fmt.Println("Error invalid informa")
-					return false
-				}
+			if i+1 >= len(lines) {
+				fmt.Println("Error: ##end without room")
+				return false
 			}
-			founend = true
-		}
 
-		if !foundstart {
-			fmt.Println("start rome  is not exist")
-			return false
-		}
-		if !founend {
-			fmt.Println("end rome is not exist")
-			return false
-		}
+			part := strings.Fields(lines[i+1])
+			if len(part) != 3 {
+				fmt.Println("Error Invalid format")
+				return false
+			}
 
+			if part[0] == "" || strings.HasPrefix(part[0], "L") {
+				fmt.Println("Invalid room name")
+				return false
+			}
+
+			_, errX := strconv.Atoi(part[1])
+			_, errY := strconv.Atoi(part[2])
+			if errX != nil || errY != nil {
+				fmt.Println("Error invalid information")
+				return false
+			}
+
+			foundend = true
+		}
 	}
+
+	if !foundstart {
+		fmt.Println("start room is not exist")
+		return false
+	}
+
+	if !foundend {
+		fmt.Println("end room is not exist")
+		return false
+	}
+
 	return true
 }

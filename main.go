@@ -37,6 +37,9 @@ func main() {
 		fmt.Println("ERROR: invalid data format")
 		return
 	}
+	if !CheckStartandEnd(lines) {
+		return
+	}
 	
 	fmt.Println("Number of ants:",antNbr , "line index:", lineIndex)
 
