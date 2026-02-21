@@ -40,8 +40,9 @@ func main() {
 	if !CheckStartandEnd(lines) {
 		return
 	}
+	room := GetRoom(lines , lineIndex)
 	
-	fmt.Println("Number of ants:",antNbr , "line index:", lineIndex)
+	fmt.Println("Number of ants:",antNbr , "line index:", lineIndex , room)
 
 }
 
