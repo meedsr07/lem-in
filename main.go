@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"strconv"
 	"strings"
 )
 
@@ -44,31 +43,5 @@ func main() {
 	
 	fmt.Println("Number of ants:",antNbr , "line index:", lineIndex , room)
 
-}
-
-func GetAnts(lines []string) (int , int) {
-    for i , line := range lines {
-        line = strings.TrimSpace(line)
-        if line == "" || strings.HasPrefix(line, "#") {
-            continue 
-        }
-
-        fields := strings.Fields(line)
-        if len(fields) != 1 {
-            fmt.Println("ERROR: invalid data format")
-            return 0 , -1
-        }
-
-        antNbr, err := strconv.Atoi(fields[0])
-        if err != nil || antNbr <= 0 {
-            fmt.Println("ERROR: invalid data format")
-            return 0 , -1
-        }
-
-        return antNbr , i
-    }
-
-    fmt.Println("ERROR: invalid data format") 
-    return 0 , -1
 }
 
