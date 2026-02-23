@@ -34,6 +34,9 @@ func Validation(arg string) {
 	if !CheckStartandEnd(lines) {
 		return
 	}
+	if !LinkChecker(lines) {
+		return
+	}
 	room := GetRoom(lines, lineIndex)
 
 	fmt.Println("Number of ants:", antNbr, "line index:", lineIndex, room)
