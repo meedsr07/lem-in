@@ -6,28 +6,37 @@ import (
 )
 
 func LinkChecker(lines []string) bool {
-	foundlinks := false
+	foundLink := false
+
 	for _, v := range lines {
 		line := strings.TrimSpace(v)
+
+		// تجاهل الأسطر الفارغة و التعليقات
 		if line == "" || strings.HasPrefix(line, "#") {
 			continue
 		}
+
+		// نفحص فقط الأسطر التي تحتوي على "-"
 		if strings.Contains(line, "-") {
-			foundlinks = true
-		}
-		
-		if foundlinks {
-			part := strings.Split(line, "-")
-			if len(part) != 2 {
-				fmt.Println("Error invalid forma")
+			foundLink = true
+
+			parts := strings.Split(line, "-")
+			if len(parts) != 2 {
+				fmt.Println("Error: invalid link format")
 				return false
 			}
-			if part[0] == "" || part[1] == "" {
-				fmt.Println("error invalid form")
+
+			if parts[0] == "" || parts[1] == "" {
+				fmt.Println("Error: invalid link format")
 				return false
 			}
-			
 		}
 	}
-	return  true
+
+	if !foundLink {
+		fmt.Println("Error: no links found")
+		return false
+	}
+
+	return true
 }
