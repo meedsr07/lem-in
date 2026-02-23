@@ -51,7 +51,7 @@ func GetRoom(lines []string, startindex int) []Room {
 		res = append(res, roomData)
 		isstart = false
 		isend = false
-
+		
 	}
 	return res
 }
