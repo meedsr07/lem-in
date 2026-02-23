@@ -28,6 +28,10 @@ func LinkChecker(lines []string) bool {
 				fmt.Println("Error: invalid link format")
 				return false
 			}
+			if parts[0] == parts[1] {
+				fmt.Println("Error  in links rome")
+				return false
+			}
 		}
 	}
 

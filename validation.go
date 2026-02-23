@@ -43,6 +43,9 @@ func Validation(arg string) {
 	if !CheckDuplicateRooms(room) {
 		return
 	}
+	if !RoomLinksexist(lines , room) {
+		return
+	}
 
 	fmt.Println("Number of ants:", antNbr, "line index:", lineIndex, room)
 }
