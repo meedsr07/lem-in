@@ -11,12 +11,10 @@ func LinkChecker(lines []string) bool {
 	for _, v := range lines {
 		line := strings.TrimSpace(v)
 
-		// تجاهل الأسطر الفارغة و التعليقات
 		if line == "" || strings.HasPrefix(line, "#") {
 			continue
 		}
 
-		// نفحص فقط الأسطر التي تحتوي على "-"
 		if strings.Contains(line, "-") {
 			foundLink = true
 
