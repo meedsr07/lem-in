@@ -46,6 +46,8 @@ func Validation(arg string) {
 	if !RoomLinksexist(lines , room) {
 		return
 	}
+	Graph := BulidGraph(lines , room)
 
-	fmt.Println("Number of ants:", antNbr, "line index:", lineIndex, room)
+	fmt.Println("Number of ants:", antNbr, "line index:", lineIndex, room )
+	fmt.Println(Graph)
 }
