@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"lem-in/parser"
 	"os"
 )
 
@@ -11,5 +12,5 @@ func main() {
 		return
 	}
 	argument := os.Args[1]
-	Validation(argument)
+	parser.Validation(argument)
 }

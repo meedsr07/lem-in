@@ -1,25 +1,18 @@
-package main
+package parser
 
 import (
+	"lem-in/graph"
 	"strconv"
 	"strings"
 )
 
-type Room struct {
-	Name    string
-	X       int
-	Y       int
-	IsStart bool
-	IsEnd   bool
-}
-
-func GetRoom(lines []string, startindex int) []Room {
-	var res []Room
+func GetRoom(lines []string, startindex int) []graph.Room {
+	var res []graph.Room
 	isstart := false
 	isend := false
 	for i := startindex; i < len(lines); i++ {
 		line := strings.TrimSpace(lines[i])
-		if line == ""  {
+		if line == "" {
 			continue
 		}
 		if line == "##start" {
@@ -43,17 +36,17 @@ func GetRoom(lines []string, startindex int) []Room {
 		x, _ := strconv.Atoi(part[1])
 		y, _ := strconv.Atoi(part[2])
 
-		roomData := Room{
-			Name: part[0],
-			X:    x,
-			Y:    y,
+		roomData := graph.Room{
+			Name:    part[0],
+			X:       x,
+			Y:       y,
 			IsStart: isstart,
-			IsEnd: isend,
+			IsEnd:   isend,
 		}
 		res = append(res, roomData)
 		isstart = false
 		isend = false
-		
+
 	}
 	return res
 }

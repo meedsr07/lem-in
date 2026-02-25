@@ -1,8 +1,11 @@
-package main
+package parser
 
-import "fmt"
+import (
+	"fmt"
+	"lem-in/graph"
+)
 
-func CheckDuplicateRooms(rooms []Room) bool {
+func CheckDuplicateRooms(rooms []graph.Room) bool {
 	for i := 0; i < len(rooms); i++ {
 		for j := i + 1; j < len(rooms); j++ {
 

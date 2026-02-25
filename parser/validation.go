@@ -1,7 +1,8 @@
-package main
+package parser
 
 import (
 	"fmt"
+	"lem-in/graph"
 	"os"
 	"strings"
 )
@@ -31,11 +32,11 @@ func Validation(arg string) {
 		fmt.Println("ERROR: invalid data format")
 		return
 	}
-	if !CheckStartandEnd(lines) {
+	if !graph.CheckStartandEnd(lines) {
 		return
 	}
 
-	if !LinkChecker(lines) {
+	if !graph.LinkChecker(lines) {
 		return
 	}
 	room := GetRoom(lines, lineIndex)
@@ -43,11 +44,11 @@ func Validation(arg string) {
 	if !CheckDuplicateRooms(room) {
 		return
 	}
-	if !RoomLinksexist(lines , room) {
+	if !graph.RoomLinksexist(lines, room) {
 		return
 	}
-	Graph := BulidGraph(lines , room)
+	graphResult := graph.BulidGraph(lines, room)
 
-	fmt.Println("Number of ants:", antNbr, "line index:", lineIndex, room )
-	fmt.Println(Graph)
+	fmt.Println("Number of ants:", antNbr, "line index:", lineIndex, room)
+	fmt.Println(graphResult)
 }
