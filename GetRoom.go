@@ -24,9 +24,11 @@ func GetRoom(lines []string, startindex int) []Room {
 		}
 		if line == "##start" {
 			isstart = true
+			continue
 		}
 		if line == "##end" {
 			isend = true
+			continue
 		}
 		if strings.HasPrefix(line, "#") {
 			continue
