@@ -10,6 +10,9 @@ func GetAnts(lines []string) (int, int) {
 	for i, line := range lines {
 		line = strings.TrimSpace(line)
 		fields := strings.Fields(line)
+		if len(fields) == 0 || strings.HasPrefix(line, "#") {
+			continue
+		}
 		
 		if len(fields) != 1 {
 			fmt.Println("ERROR: invalid data format")

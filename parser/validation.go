@@ -3,6 +3,7 @@ package parser
 import (
 	"fmt"
 	"lem-in/graph"
+	"lem-in/bfs"
 	"os"
 	"strings"
 )
@@ -54,6 +55,12 @@ func Validation(arg string) {
 	}
 	graphResult := graph.BulidGraph(lines, room)
 	start , end := GetStartandEnd(room)
+	phat := bfs.FindPath(graphResult, start, end)
+	if phat == nil {
+		fmt.Println("ERROR: no path found between start and end")
+		return
+	}
+	fmt.Println("Path found:", phat)
 
 	fmt.Println("Number of ants:", antNbr, "line index:", lineIndex, room)
 	fmt.Println(graphResult)
