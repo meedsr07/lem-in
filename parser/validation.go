@@ -8,16 +8,21 @@ import (
 )
 
 func Validation(arg string) {
+
+	// reading file 
 	file, err := os.ReadFile(arg)
 	if err != nil {
 		fmt.Println("error in reading file")
 		return
 	}
+	// if file is empty
 	if len(file) == 0 {
 		fmt.Println("error : file is empty")
 		return
 	}
+	// trim whit space in first and laste
 	conten := strings.TrimSpace(string(file))
+	// split file conten by \n
 	lines := strings.Split(conten, "\n")
 
 	antNbr, lineIndex := GetAnts(lines)
@@ -48,7 +53,9 @@ func Validation(arg string) {
 		return
 	}
 	graphResult := graph.BulidGraph(lines, room)
+	start , end := GetStartandEnd(room)
 
 	fmt.Println("Number of ants:", antNbr, "line index:", lineIndex, room)
 	fmt.Println(graphResult)
+	fmt.Println(start , end)
 }
