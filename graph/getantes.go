@@ -1,4 +1,4 @@
-package parser
+package graph
 
 import (
 	"fmt"
@@ -13,7 +13,7 @@ func GetAnts(lines []string) (int, int) {
 		if len(fields) == 0 || strings.HasPrefix(line, "#") {
 			continue
 		}
-		
+
 		if len(fields) != 1 {
 			fmt.Println("ERROR: invalid data format")
 			return 0, -1

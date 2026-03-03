@@ -1,13 +1,12 @@
-package parser
+package graph
 
 import (
-	"lem-in/graph"
 	"strconv"
 	"strings"
 )
 
-func GetRoom(lines []string, startindex int) []graph.Room {
-	var res []graph.Room
+func GetRoom(lines []string, startindex int) []Room {
+	var res []Room
 	isstart := false
 	isend := false
 	for i := startindex; i < len(lines); i++ {
@@ -36,7 +35,7 @@ func GetRoom(lines []string, startindex int) []graph.Room {
 		x, _ := strconv.Atoi(part[1])
 		y, _ := strconv.Atoi(part[2])
 
-		roomData := graph.Room{
+		roomData := Room{
 			Name:    part[0],
 			X:       x,
 			Y:       y,

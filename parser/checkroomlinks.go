@@ -1,11 +1,12 @@
-package graph
+package parser
 
 import (
 	"fmt"
+	"lem-in/graph"
 	"strings"
 )
 
-func RoomLinksexist(lines []string, room []Room) bool {
+func RoomLinksexist(lines []string, room []graph.Room) bool {
 	roomMap := make(map[string]bool)
 	for _, r := range room {
 		roomMap[r.Name] = true

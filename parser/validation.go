@@ -2,15 +2,15 @@ package parser
 
 import (
 	"fmt"
-	"lem-in/graph"
 	"lem-in/bfs"
+	"lem-in/graph"
 	"os"
 	"strings"
 )
 
 func Validation(arg string) {
 
-	// reading file 
+	// reading file
 	file, err := os.ReadFile(arg)
 	if err != nil {
 		fmt.Println("error in reading file")
@@ -26,7 +26,7 @@ func Validation(arg string) {
 	// split file conten by \n
 	lines := strings.Split(conten, "\n")
 
-	antNbr, lineIndex := GetAnts(lines)
+	antNbr, lineIndex := graph.GetAnts(lines)
 	if lineIndex == -1 {
 		return
 	}
@@ -38,23 +38,23 @@ func Validation(arg string) {
 		fmt.Println("ERROR: invalid data format")
 		return
 	}
-	if !graph.CheckStartandEnd(lines) {
+	if !CheckStartandEnd(lines) {
 		return
 	}
 
-	if !graph.LinkChecker(lines) {
+	if !LinkChecker(lines) {
 		return
 	}
-	room := GetRoom(lines, lineIndex)
+	room := graph.GetRoom(lines, lineIndex)
 
 	if !CheckDuplicateRooms(room) {
 		return
 	}
-	if !graph.RoomLinksexist(lines, room) {
+	if !RoomLinksexist(lines, room) {
 		return
 	}
 	graphResult := graph.BulidGraph(lines, room)
-	start , end := GetStartandEnd(room)
+	start, end := graph.GetStartandEnd(room)
 	allpaht := bfs.FindMultiplePaths(graphResult, start, end)
 	if len(allpaht) == 0 {
 		fmt.Println("ERROR: no path found")
