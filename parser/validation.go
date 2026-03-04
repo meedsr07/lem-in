@@ -55,12 +55,14 @@ func Validation(arg string) {
 	}
 	graphResult := graph.BulidGraph(lines, room)
 	start, end := graph.GetStartandEnd(room)
-	allpaht := bfs.FindMultiplePaths(graphResult, start, end)
+	allpaht := bfs.BFSAllPaths(graphResult, start, end)
 	if len(allpaht) == 0 {
 		fmt.Println("ERROR: no path found")
 		return
 	}
-	fmt.Println("Path found:", allpaht)
+
+	bestPaths := bfs.Filterpaths(allpaht)
+	fmt.Println("best paths:", bestPaths)
 	fmt.Println("Number of ants:", antNbr, "line index:", lineIndex, room)
 	fmt.Println(graphResult)
 	fmt.Println(start , end)
