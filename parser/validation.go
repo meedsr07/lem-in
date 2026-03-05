@@ -59,6 +59,7 @@ func Validation(arg string) {
 		return
 	}
 	selectedPath := antmoving.SelctionPaths(allPaths)
-	fmt.Println(selectedPath)
+	Pathinfo := antmoving.DistributeAnts(selectedPath, antNbr)
+	antmoving.MoveAntsCorrect(Pathinfo)
 
 }
