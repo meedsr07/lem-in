@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"lem-in/bfs"
 	"lem-in/graph"
+	"lem-in/antmoving"
 	"os"
 	"strings"
 )
@@ -57,21 +58,7 @@ func Validation(arg string) {
 		fmt.Println("ERROR")
 		return
 	}
+	selectedPath := antmoving.SelctionPaths(allPaths)
+	fmt.Println(selectedPath)
 
-	// -------- FILTER PATHS --------
-	bestPaths := bfs.Filterpaths(allPaths)
-	if len(bestPaths) == 0 {
-		fmt.Println("ERROR")
-		return
-	}
-
-	// -------- DISTRIBUTE ANTS --------
-	antDistribution := bfs.DistributeAnts(bestPaths, antNbr)
-
-	// -------- PRINT INPUT --------
-	fmt.Println(content)
-	fmt.Println()
-
-	// -------- SIMULATION --------
-	bfs.Simulate(bestPaths, antDistribution, antNbr)
 }
