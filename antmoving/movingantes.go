@@ -18,12 +18,11 @@ func MoveAntsCorrect(paths []PathInfo) {
 	antsInEnd := 0
 	turn := 1
 
-	// مصفوفة لتخزين كم نمل دخل كل مسار
 	entered := make([]int, len(paths))
 
 	for antsInEnd < totalAnts {
 		line := ""
-		// أولاً، نضيف نمل جديد لكل مسار إذا ممكن
+	
 		for i, p := range paths {
 			if entered[i] < p.Ants {
 				ants = append(ants, Ant{ID: nextAntID, Pos: 0, Path: p.Path})
@@ -32,7 +31,7 @@ func MoveAntsCorrect(paths []PathInfo) {
 			}
 		}
 
-		// الآن نحرك كل النمل
+	
 		for i := range ants {
 			if ants[i].Pos < len(ants[i].Path)-1 {
 				ants[i].Pos++
