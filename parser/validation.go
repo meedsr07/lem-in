@@ -19,7 +19,7 @@ func Validation(arg string) {
 	}
 
 	if len(file) == 0 {
-		fmt.Println("ERROR")
+		fmt.Println("ERROR empty file")
 		return
 	}
 
