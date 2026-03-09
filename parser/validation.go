@@ -58,10 +58,10 @@ func Validation(arg string) {
 		fmt.Println("ERROR")
 		return
 	}
-	selectedPath := antmoving.SelctionPaths(allPaths)
+	selectedPath := antmoving.SelectBestPaths(allPaths,antNbr)
 	Pathinfo := antmoving.DistributeAnts(selectedPath, antNbr)
-	fmt.Println(content)
-	fmt.Println()
+	// fmt.Println(content)
+	// fmt.Println()
 	antmoving.MoveAntsCorrect(Pathinfo)
 
 }
