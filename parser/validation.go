@@ -25,7 +25,9 @@ func Validation(arg string) {
 
 	content := strings.TrimSpace(string(file))
 	lines := strings.Split(content, "\n")
-
+	if !ValidForma(lines){
+		return
+	}
 	// -------- PARSE ANTS --------
 	antNbr, lineIndex := graph.GetAnts(lines)
 	if lineIndex == -1 || antNbr <= 0 {
