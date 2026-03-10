@@ -29,7 +29,7 @@ func LinkChecker(lines []string) bool {
 				return false
 			}
 			if parts[0] == parts[1] {
-				fmt.Println("Error  in links rome")
+				fmt.Println("Error  in links room")
 				return false
 			}
 		}

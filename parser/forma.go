@@ -51,7 +51,7 @@ func ValidForma(lines []string) bool {
 		}
 
 		// anything else = error
-		fmt.Println("invalid file forma")
+		fmt.Println("invalid file format")
 		return false
 	}
 

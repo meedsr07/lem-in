@@ -73,7 +73,7 @@ func CheckStartandEnd(lines []string) bool {
 	}
 
 	if !foundstart {
-		fmt.Println("start room is not exist www")
+		fmt.Println("start room is not exist")
 		return false
 	}
 
