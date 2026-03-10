@@ -10,8 +10,7 @@ import (
 )
 
 func Validation(arg string) {
-
-	// -------- READ FILE --------
+	
 	file, err := os.ReadFile(arg)
 	if err != nil {
 		fmt.Println("ERROR")
@@ -28,25 +27,23 @@ func Validation(arg string) {
 	if !ValidForma(lines){
 		return
 	}
+	if !CheckOrder(lines) {
+		return
+	}
 	// -------- PARSE ANTS --------
 	antNbr, lineIndex := graph.GetAnts(lines)
 	if lineIndex == -1 || antNbr <= 0 {
-		fmt.Println("ERROR")
 		return
 	}
 
 	// -------- VALIDATION --------
-	if !CheckStartandEnd(lines) ||
-		!LinkChecker(lines) {
-		fmt.Println("ERROR")
+	if !CheckStartandEnd(lines) || 	!LinkChecker(lines) {
 		return
 	}
 
 	rooms := graph.GetRoom(lines, lineIndex)
 
-	if !CheckDuplicateRooms(rooms) ||
-		!RoomLinksexist(lines, rooms) {
-		fmt.Println("ERROR")
+	if !CheckDuplicateRooms(rooms) ||!RoomLinksexist(lines, rooms) {
 		return
 	}
 
@@ -62,8 +59,8 @@ func Validation(arg string) {
 	}
 	selectedPath := antmoving.SelectBestPaths(allPaths,antNbr)
 	Pathinfo := antmoving.DistributeAnts(selectedPath, antNbr)
-	// fmt.Println(content)
-	// fmt.Println()
+	fmt.Println(content)
+	fmt.Println()
 	antmoving.MoveAntsCorrect(Pathinfo)
 
 }
