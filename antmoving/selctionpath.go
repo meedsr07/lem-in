@@ -37,9 +37,8 @@ func SelectBestPaths(allPaths [][]string, ants int) [][]string {
 	return best
 }
 
-
+// CalculateTurns calculates the number of turns required to move all ants through the given paths.
 func CalculateTurns(paths [][]string, ants int) int {
-
 	lengths := make([]int, len(paths))
 
 	for i := range paths {
@@ -62,7 +61,7 @@ func CalculateTurns(paths [][]string, ants int) int {
 
 	maxTurns := 0
 	for i := range paths {
-
+	
 		turns := lengths[i] + antsOnPath[i]
 
 		if turns > maxTurns {
