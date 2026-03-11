@@ -58,6 +58,7 @@ func Validation(arg string) {
 		return
 	}
 	selectedPath := antmoving.SelectBestPaths(allPaths,antNbr)
+	fmt.Println(selectedPath)
 	Pathinfo := antmoving.DistributeAnts(selectedPath, antNbr)
 	fmt.Println(content)
 	fmt.Println()

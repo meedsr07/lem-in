@@ -22,7 +22,7 @@ func DistributeAnts(paths [][]string, totalAnts int) []PathInfo {
 	// Loop until all ants are distributed
 	for antsRemaining > 0 {
 		// Find the path that will allow the next ant to reach the end in the fewest turns
-		minIndex := 0
+		bestpath := 0
 		// Calculate the number of turns for each path if we add one more ant to it
 		minTurns := lengths[0] + result[0].Ants
 		// Loop through the paths to find the one with the minimum turns
@@ -34,14 +34,14 @@ func DistributeAnts(paths [][]string, totalAnts int) []PathInfo {
 				// Update the minimum turns and the index of the path
 				minTurns = turns
 				// Update the index of the path with the minimum turns
-				minIndex = i
+				bestpath = i
 				// If the turns are equal, we can choose the path with fewer ants currently assigned
 			}
 		}
 		// Assign one ant to the path with the minimum turns
-		result[minIndex].Path = paths[minIndex]
+		result[bestpath].Path = paths[bestpath]
 		// Increment the number of ants assigned to this path
-		result[minIndex].Ants++
+		result[bestpath].Ants++
 		// Decrement the number of remaining ants
 		antsRemaining--
 	}
